@@ -1,0 +1,9 @@
+.admin-audit-log-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gutter);
+}
+
+.admin-audit-log-table {
+    overflow: hidden;
+}

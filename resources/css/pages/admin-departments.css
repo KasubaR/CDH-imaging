@@ -1,0 +1,71 @@
+.admin-departments-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gutter);
+}
+
+.admin-departments-page__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.admin-departments-page__header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.admin-departments-table {
+    overflow: hidden;
+}
+
+.admin-departments-table__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    justify-content: flex-end;
+}
+
+.admin-departments-table__status--inactive {
+    opacity: 0.65;
+}
+
+.admin-departments-matrix {
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.admin-departments-matrix__table-wrap {
+    overflow-x: auto;
+}
+
+.admin-departments-matrix__table th,
+.admin-departments-matrix__table td {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.admin-departments-matrix__table thead th:first-child,
+.admin-departments-matrix__table tbody th {
+    text-align: left;
+}
+
+.admin-departments-matrix__cell input[type='checkbox'] {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+.admin-departments-matrix__self {
+    color: var(--color-on-surface-variant);
+}
+
+@media (min-width: 768px) {
+    .admin-departments-page__header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+}

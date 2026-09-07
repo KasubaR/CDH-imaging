@@ -1,0 +1,68 @@
+.image-delete-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gutter);
+}
+
+.image-delete-card {
+    max-width: 40rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.image-delete-form-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    border-top: 1px solid var(--color-outline-variant);
+}
+
+.image-delete-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.image-delete-form__label {
+    color: var(--color-on-surface);
+}
+
+.image-delete-form__input {
+    width: 100%;
+    min-height: var(--touch-min);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-container-lowest);
+    color: var(--color-on-surface);
+    font: inherit;
+}
+
+.image-delete-form__input:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}
+
+.image-delete-form__error {
+    color: var(--color-error);
+    margin: 0;
+}
+
+.image-delete-form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: flex-end;
+}
+
+.image-delete-form__submit {
+    background: var(--color-error);
+    color: var(--color-on-error);
+    border-color: var(--color-error);
+}
+
+.image-delete-form__submit:hover,
+.image-delete-form__submit:focus-visible {
+    background: var(--color-on-error-container);
+    border-color: var(--color-on-error-container);
+}

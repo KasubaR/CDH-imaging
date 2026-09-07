@@ -1,0 +1,17 @@
+@import "./tokens.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./pages/inbox.css";
+@import "./pages/viewer.css";
+@import "./pages/dashboard.css";
+@import "./pages/auth.css";
+@import "./pages/patients.css";
+@import "./pages/admin-examination-types.css";
+@import "./pages/admin-accounts.css";
+@import "./pages/admin-departments.css";
+@import "./pages/admin-audit-log.css";
+@import "./pages/admin-permissions.css";
+@import "./pages/admin-settings.css";
+@import "./pages/upload.css";
+@import "./pages/image-delete.css";

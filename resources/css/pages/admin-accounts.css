@@ -1,0 +1,281 @@
+.admin-accounts-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gutter);
+}
+
+.admin-accounts-page__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.admin-accounts-table {
+    overflow: hidden;
+}
+
+.admin-accounts-table__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    justify-content: flex-end;
+}
+
+.admin-accounts-table__status--inactive {
+    opacity: 0.65;
+}
+
+.admin-accounts-page__edit-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-gutter);
+}
+
+.admin-account-edit__back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-bottom: var(--space-2);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.admin-account-edit__back:hover,
+.admin-account-edit__back:focus-visible {
+    color: var(--color-accent);
+    outline: none;
+}
+
+.admin-account-edit__back .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.admin-account-edit__main,
+.admin-account-edit__password {
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.admin-account-edit__identity {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    border-bottom: 1px solid var(--color-outline-variant);
+    background: linear-gradient(
+        135deg,
+        var(--color-surface-container-low) 0%,
+        var(--color-surface-container-lowest) 100%
+    );
+}
+
+.admin-account-edit__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: var(--radius-full);
+    background: var(--color-primary-fixed);
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+}
+
+.admin-account-edit__identity-text {
+    flex: 1 1 12rem;
+    min-width: 0;
+}
+
+.admin-account-edit__identity-name {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 650;
+    line-height: 1.3;
+}
+
+.admin-account-edit__identity-meta {
+    margin: var(--space-1) 0 0;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.admin-account-edit__role-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-outline-variant);
+    background: var(--color-surface-container-lowest);
+    color: var(--color-on-surface);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.admin-account-edit__form {
+    padding: var(--space-5);
+    gap: var(--space-6);
+}
+
+.admin-account-edit__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid var(--color-outline-variant);
+}
+
+.admin-account-edit__section:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.admin-account-edit__section-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.admin-account-edit__section-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 650;
+    color: var(--color-on-surface);
+}
+
+.admin-account-edit__section-lede {
+    margin: 0;
+    font-size: 13px;
+    color: var(--color-on-surface-variant);
+    line-height: 1.45;
+}
+
+.admin-account-edit__fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.admin-account-edit__field-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+.admin-account-edit__permission-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+}
+
+.admin-account-edit__permission {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-3);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-container-lowest);
+    cursor: pointer;
+    transition: border-color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+}
+
+.admin-account-edit__permission:hover {
+    border-color: var(--color-accent);
+}
+
+.admin-account-edit__permission:has(input:checked) {
+    border-color: var(--color-primary);
+    background: var(--color-primary-fixed);
+}
+
+.admin-account-edit__permission input {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+    accent-color: var(--color-primary);
+}
+
+.admin-account-edit__permission-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-on-surface);
+    line-height: 1.35;
+}
+
+.admin-account-edit__actions {
+    margin-top: 0;
+}
+
+.admin-account-edit__password {
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    background: var(--color-surface-container-lowest);
+}
+
+.admin-account-edit__password-head {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+}
+
+.admin-account-edit__password-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+    .admin-account-edit__field-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-account-edit__permission-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .admin-accounts-page__header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1024px) {
+    .admin-accounts-page__edit-layout {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .admin-account-edit__main {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .admin-account-edit__password {
+        flex: 0 0 22rem;
+    }
+
+    .admin-account-edit__permission-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

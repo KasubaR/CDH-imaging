@@ -1,0 +1,112 @@
+:root {
+    /* Zambia-health palette mapped to existing token names */
+    --color-surface: #ffffff;
+    --color-surface-dim: #e9e9e4;
+    --color-surface-bright: #ffffff;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-low: #f7f7f5;
+    --color-surface-container: #f1f1ee;
+    --color-surface-container-high: #e9e9e4;
+    --color-surface-container-highest: #dedcd4;
+    --color-on-surface: #1a2e24;
+    --color-on-surface-variant: #4a5c52;
+    --color-inverse-surface: #0f3d2e;
+    --color-inverse-on-surface: #f4f0e6;
+    --color-outline: #7a8a80;
+    --color-outline-variant: #d4cbb8;
+    --color-surface-tint: #0f3d2e;
+    --color-primary: #0f3d2e;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #1a5240;
+    --color-on-primary-container: #e8f5ef;
+    --color-inverse-primary: #a8d4bc;
+    --color-secondary: #c9892c;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #f5e6cc;
+    --color-on-secondary-container: #6b4a12;
+    --color-tertiary: #8b4513;
+    --color-on-tertiary: #ffffff;
+    --color-tertiary-container: #f0dcc8;
+    --color-on-tertiary-container: #5c3010;
+    --color-error: #b42318;
+    --color-on-error: #ffffff;
+    --color-error-container: #fde8e6;
+    --color-on-error-container: #7a1a12;
+    --color-primary-fixed: #d4e8dc;
+    --color-primary-fixed-dim: #a8d4bc;
+    --color-on-primary-fixed: #0a2818;
+    --color-on-primary-fixed-variant: #1a5240;
+    --color-secondary-fixed: #f5e6cc;
+    --color-secondary-fixed-dim: #e8c890;
+    --color-on-secondary-fixed: #3d2808;
+    --color-on-secondary-fixed-variant: #6b4a12;
+    --color-tertiary-fixed: #f0dcc8;
+    --color-tertiary-fixed-dim: #d4b898;
+    --color-on-tertiary-fixed: #3d2008;
+    --color-on-tertiary-fixed-variant: #5c3010;
+    --color-background: #ffffff;
+    --color-on-background: #1a2e24;
+    --color-surface-variant: #e9e9e4;
+    --color-row-hover: rgba(15, 61, 46, 0.06);
+    --color-badge-id-bg: #f1f1ee;
+    --color-badge-pending-bg: #f5e6cc;
+    --color-badge-pending-text: #6b4a12;
+    --color-badge-pending-border: #e8c890;
+    --color-viewer-bg: #0a1812;
+    --color-viewer-overlay: #c9892c;
+    --color-chart-bar: rgba(201, 137, 44, 0.35);
+    --color-dept-link-icon-hover-bg: rgba(15, 61, 46, 0.12);
+    --color-overlay-scrim: rgba(15, 61, 46, 0.45);
+    --color-on-primary-muted: rgba(255, 255, 255, 0.72);
+    --color-on-primary-faint: rgba(255, 255, 255, 0.1);
+    --color-on-primary-watermark: rgba(15, 61, 46, 0.04);
+    --color-accent: #c9892c;
+    --color-on-accent: #ffffff;
+    --color-rail-bg: #0f3d2e;
+    --color-rail-text: rgba(255, 255, 255, 0.72);
+    --color-rail-text-active: #ffffff;
+    --color-rail-hover: rgba(255, 255, 255, 0.08);
+    --color-rail-active: rgba(201, 137, 44, 0.25);
+
+    --font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+
+    --radius-sm: 0.375rem;
+    --radius-default: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1.25rem;
+    --radius-full: 9999px;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --spacing-unit: var(--space-1);
+    --spacing-gutter: var(--space-4);
+    --spacing-margin-desktop: var(--space-8);
+    --spacing-margin-mobile: var(--space-4);
+    --container-max: 1440px;
+
+    --sidebar-width: 4.5rem;
+    --sidebar-width-expanded: 13.75rem;
+    --topbar-height: 3.5rem;
+    --control-height: var(--space-10);
+    --touch-min: 44px;
+
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-right: env(safe-area-inset-right, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-left: env(safe-area-inset-left, 0px);
+
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --duration-fast: 200ms;
+    --duration-med: 320ms;
+
+    --shadow-card: 0 4px 24px -4px rgba(15, 61, 46, 0.08);
+    --shadow-sm: 0 1px 3px rgba(15, 61, 46, 0.06);
+    --shadow-float: 0 8px 32px -8px rgba(15, 61, 46, 0.12);
+    --shadow-rail: 4px 0 24px rgba(15, 61, 46, 0.15);
+}

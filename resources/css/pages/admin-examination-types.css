@@ -1,0 +1,34 @@
+.admin-examination-types-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gutter);
+}
+
+.admin-examination-types-page__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.admin-examination-types-table {
+    overflow: hidden;
+}
+
+.admin-examination-types-table__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    justify-content: flex-end;
+}
+
+.admin-examination-types-table__status--inactive {
+    opacity: 0.65;
+}
+
+@media (min-width: 768px) {
+    .admin-examination-types-page__header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+}

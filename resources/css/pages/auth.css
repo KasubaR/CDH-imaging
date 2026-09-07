@@ -1,0 +1,109 @@
+.auth-layout {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-background);
+    padding: calc(var(--space-6) + var(--safe-area-top)) var(--space-4) calc(var(--space-6) + var(--safe-area-bottom));
+    overflow: hidden;
+}
+
+.auth-layout__watermark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.auth-layout__watermark img {
+    width: min(70vw, 20rem);
+    opacity: 0.06;
+}
+
+.auth-panel {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 26rem;
+}
+
+.auth-panel__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.auth-panel__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-4);
+}
+
+.auth-panel__logo {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.auth-panel__eyebrow {
+    margin: 0 0 var(--space-1);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.auth-panel__title {
+    margin: 0;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.auth-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    overflow: hidden;
+}
+
+.auth-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.auth-card .page-header {
+    gap: var(--space-2);
+}
+
+.auth-card__footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--color-on-surface-variant);
+}
+
+@media (min-width: 768px) {
+    .auth-panel__title {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .auth-card {
+        padding: var(--space-8);
+    }
+}

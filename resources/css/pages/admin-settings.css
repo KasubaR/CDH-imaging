@@ -1,0 +1,22 @@
+.admin-settings-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gutter);
+}
+
+.admin-settings-storage__body {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.admin-settings-storage__label {
+    color: var(--color-on-surface-variant);
+}
+
+.admin-settings-storage__value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-on-surface);
+}
