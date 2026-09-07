@@ -6,10 +6,10 @@
 @section('content')
 <div class="canvas__inner admin-permissions-page">
     <div class="page-header">
-        <h2 class="text-headline-lg text-on-surface">Permissions</h2>
         <p class="text-body-md page-header__lede">Who holds which permission, at a glance. Edit an account to change its permissions.</p>
     </div>
 
+    <x-filter-drawer>
     <form method="get" action="{{ route('admin.permissions.index') }}" class="filter-chips" role="group" aria-label="Filters">
         <input
             type="search"
@@ -34,6 +34,7 @@
         <button type="submit" class="btn btn--secondary">Filter</button>
         <a href="{{ route('admin.permissions.index') }}" class="btn btn--ghost">Clear</a>
     </form>
+    </x-filter-drawer>
 
     <div class="bento-card admin-permissions-table">
         @if ($accounts->isEmpty())

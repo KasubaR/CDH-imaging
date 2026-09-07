@@ -6,10 +6,7 @@
 @section('content')
 <div class="canvas__inner admin-departments-page">
     <div class="page-header page-header--split">
-        <div>
-            <h2 class="text-headline-lg text-on-surface">Transfer matrix</h2>
-            <p class="text-body-md page-header__lede">Check a cell to let the row department send transfers to the column department. This is what TransferAuthorizationService actually checks — the per-department "Can send/receive" flags are a separate, coarser toggle.</p>
-        </div>
+        <p class="text-body-md page-header__lede">Check a cell to let the row department send transfers to the column department. This is what TransferAuthorizationService actually checks — the per-department "Can send/receive" flags are a separate, coarser toggle.</p>
 
         <a href="{{ route('admin.departments.index') }}" class="btn btn--secondary">
             <span class="material-symbols-outlined">arrow_back</span>

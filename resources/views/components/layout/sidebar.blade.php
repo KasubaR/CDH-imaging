@@ -4,6 +4,11 @@
 
 @php
     $user = auth()->user();
+    $brandTitle = match (true) {
+        $user?->isAdmin() => 'Admin',
+        $user?->isMoic() => 'MOIC',
+        default => $user?->department?->name ?? 'CDH',
+    };
 @endphp
 
 <aside class="sidebar" data-sidebar id="sidebar" aria-label="Main navigation">
@@ -15,7 +20,7 @@
                 class="sidebar__logo"
             >
             <div class="sidebar__brand-text">
-                <div class="sidebar__brand-title">Imaging Dept</div>
+                <div class="sidebar__brand-title">{{ $brandTitle }}</div>
                 <div class="sidebar__brand-subtitle">District Hospital</div>
             </div>
         </div>
@@ -34,6 +39,34 @@
                 <span class="material-symbols-outlined @if(request()->routeIs('admin.dashboard')) material-symbols-outlined--filled @endif">dashboard</span>
                 <span class="sidebar__nav-label">Dashboard</span>
             </a>
+        @endif
+
+        @can('view-images')
+            @unless ($user?->isAdmin())
+                <a href="{{ route('department.dashboard') }}" @class(['sidebar__nav-link', 'sidebar__nav-link--active' => request()->routeIs('department.dashboard')])>
+                    <span class="material-symbols-outlined @if(request()->routeIs('department.dashboard')) material-symbols-outlined--filled @endif">dashboard</span>
+                    <span class="sidebar__nav-label">Dashboard</span>
+                </a>
+            @endunless
+            <a href="{{ route('department.index') }}" @class(['sidebar__nav-link', 'sidebar__nav-link--active' => request()->routeIs('department.index')])>
+                <span class="material-symbols-outlined @if(request()->routeIs('department.index')) material-symbols-outlined--filled @endif">inbox</span>
+                <span class="sidebar__nav-label">Inbox</span>
+            </a>
+        @endcan
+
+        <a href="{{ route('department.index') }}" class="sidebar__nav-link">
+            <span class="material-symbols-outlined">send</span>
+            <span class="sidebar__nav-label">Sent</span>
+        </a>
+
+        @can('view-images')
+            <a href="{{ route('patients.index') }}" @class(['sidebar__nav-link', 'sidebar__nav-link--active' => request()->routeIs('patients.*') || request()->routeIs('examinations.*')])>
+                <span class="material-symbols-outlined @if(request()->routeIs('patients.*') || request()->routeIs('examinations.*')) material-symbols-outlined--filled @endif">person_search</span>
+                <span class="sidebar__nav-label">Patients</span>
+            </a>
+        @endcan
+
+        @if ($user?->isAdmin())
             <a href="{{ route('admin.examination-types.index') }}" @class(['sidebar__nav-link', 'sidebar__nav-link--active' => request()->routeIs('admin.examination-types.*')])>
                 <span class="material-symbols-outlined @if(request()->routeIs('admin.examination-types.*')) material-symbols-outlined--filled @endif">category</span>
                 <span class="sidebar__nav-label">Examination Types</span>
@@ -59,25 +92,6 @@
                 <span class="sidebar__nav-label">Settings</span>
             </a>
         @endif
-
-        @can('view-images')
-            <a href="{{ route('department.index') }}" @class(['sidebar__nav-link', 'sidebar__nav-link--active' => request()->routeIs('department.*')])>
-                <span class="material-symbols-outlined @if(request()->routeIs('department.*')) material-symbols-outlined--filled @endif">inbox</span>
-                <span class="sidebar__nav-label">Inbox</span>
-            </a>
-        @endcan
-
-        <a href="{{ route('department.index') }}" class="sidebar__nav-link">
-            <span class="material-symbols-outlined">send</span>
-            <span class="sidebar__nav-label">Sent</span>
-        </a>
-
-        @can('view-images')
-            <a href="{{ route('patients.index') }}" @class(['sidebar__nav-link', 'sidebar__nav-link--active' => request()->routeIs('patients.*') || request()->routeIs('examinations.*')])>
-                <span class="material-symbols-outlined @if(request()->routeIs('patients.*') || request()->routeIs('examinations.*')) material-symbols-outlined--filled @endif">person_search</span>
-                <span class="sidebar__nav-label">Patients</span>
-            </a>
-        @endcan
     </nav>
 
     <div class="sidebar__footer">

@@ -16,7 +16,6 @@
 
 <div class="canvas__inner patients-page">
     <div class="page-header">
-        <h2 class="text-headline-lg text-on-surface">New examination</h2>
         <p class="text-body-md page-header__lede">Record an examination for {{ $patient->patient_name }}.</p>
     </div>
 

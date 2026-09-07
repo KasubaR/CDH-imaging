@@ -6,10 +6,7 @@
 @section('content')
 <div class="canvas__inner admin-examination-types-page">
     <div class="admin-examination-types-page__header page-header page-header--split">
-        <div>
-            <h2 class="text-headline-lg text-on-surface">Examination Types</h2>
-            <p class="text-body-md page-header__lede">Manage body-region examination types used when recording studies.</p>
-        </div>
+        <p class="text-body-md page-header__lede">Manage body-region examination types used when recording studies.</p>
 
         <a href="{{ route('admin.examination-types.create') }}" class="btn btn--primary">
             <span class="material-symbols-outlined">add</span>

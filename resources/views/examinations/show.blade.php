@@ -2,7 +2,6 @@
 
 @section('title', $examination->patient->patient_name . ' — Examination')
 @section('topbar_desktop_title', 'Examination viewer')
-@section('topbar_search', 'Search patient ID...')
 
 @section('content')
 @php

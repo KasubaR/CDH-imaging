@@ -4,20 +4,6 @@
     gap: var(--spacing-gutter);
 }
 
-.inbox-dashboard {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-gutter);
-}
-
-.inbox-dashboard__title {
-    margin: 0;
-}
-
-.inbox-recent-card {
-    overflow: hidden;
-}
-
 .inbox-list-card {
     display: flex;
     flex-direction: column;

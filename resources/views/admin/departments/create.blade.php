@@ -5,10 +5,6 @@
 
 @section('content')
 <div class="canvas__inner admin-departments-page">
-    <div class="page-header">
-        <h2 class="text-headline-lg text-on-surface">Add department</h2>
-    </div>
-
     <div class="bento-card form-card">
         <form method="post" action="{{ route('admin.departments.store') }}" class="form-stack">
             @csrf

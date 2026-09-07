@@ -6,7 +6,6 @@
 @section('content')
 <div class="canvas__inner upload-page">
     <div class="page-header">
-        <h2 class="text-headline-lg text-on-surface">Upload X-Ray</h2>
         <p class="text-body-md page-header__lede">Add images to this examination.</p>
     </div>
 

@@ -17,7 +17,6 @@ class Topbar extends Component
     public function __construct(
         public ?string $title = null,
         public ?string $desktopTitle = null,
-        public string $searchPlaceholder = 'Search patients or IDs...',
     ) {
         $user = auth()->user();
 

@@ -10,7 +10,6 @@
 
 <div class="canvas__inner image-delete-page">
     <div class="page-header">
-        <h2 class="text-headline-lg text-on-surface">Permanently delete image</h2>
         <p class="text-body-md page-header__lede">
             This cannot be undone. The original file and thumbnail will be removed from storage.
         </p>

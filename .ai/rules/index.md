@@ -5,10 +5,11 @@ Before planning or editing, find the row whose globs match the file's path and r
 | Applies to | Rule file |
 | --- | --- |
 | app/Http/Controllers/Admin/UserController.php,app/Policies/UserPolicy.php,app/Http/Requests/Admin/StoreUserRequest.php,app/Http/Requests/Admin/UpdateUserRequest.php,app/Http/Requests/Admin/ResetUserPasswordRequest.php,resources/views/admin/accounts/** | .ai/rules/accounts.md |
+| app/Enums/UserRole.php,app/Models/User.php,app/Policies/ImagePolicy.php,app/Policies/ExaminationPolicy.php,app/Http/Controllers/Admin/UserController.php | .ai/rules/admin.md |
 | app/Services/AuditLogService.php,app/Models/AuditLog.php,app/Enums/AuditAction.php,database/migrations/*audit_logs*,app/Http/Controllers/Admin/AuditLogController.php,resources/views/admin/audit-logs/** | .ai/rules/audit.md |
 | app/Console/Commands/BackupDatabaseCommand.php,app/Console/Commands/BackupImagesCommand.php,app/Console/Commands/PruneBackupsCommand.php,app/Services/Backup/**,config/cdh.php,config/filesystems.php,routes/console.php | .ai/rules/backups.md |
 | app/Services/ThumbnailGenerator.php,app/Http/Controllers/Image/** | .ai/rules/controllers-image.md |
-| app/Services/DashboardStatsService.php,app/Http/Controllers/Department/DepartmentController.php,app/Http/Controllers/Admin/DashboardController.php,resources/views/department/index.blade.php,resources/views/admin/dashboard.blade.php | .ai/rules/dashboards.md |
+| app/Services/DashboardStatsService.php,app/Http/Controllers/Department/DashboardController.php,app/Http/Controllers/Department/DepartmentController.php,app/Http/Controllers/Admin/DashboardController.php,resources/views/department/dashboard.blade.php,resources/views/department/index.blade.php,resources/views/admin/dashboard.blade.php | .ai/rules/dashboards.md |
 | app/Http/Controllers/Department/DepartmentController.php,resources/views/department/*.blade.php | .ai/rules/department.md |
 | app/Http/Controllers/Admin/DepartmentController.php,app/Http/Controllers/Admin/DepartmentTransferMatrixController.php,app/Policies/DepartmentPolicy.php,app/Http/Requests/Admin/StoreDepartmentRequest.php,app/Http/Requests/Admin/UpdateDepartmentRequest.php,resources/views/admin/departments/** | .ai/rules/departments.md |
 | app/Services/TransferLifecycleService.php,app/Models/Transfer.php,app/Models/TransferRecipient.php,app/Enums/TransferStatus.php,app/Enums/TransferRecipientStatus.php | .ai/rules/enums.md |

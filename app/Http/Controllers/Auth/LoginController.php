@@ -39,6 +39,6 @@ class LoginController extends Controller
     {
         return $user->isAdmin()
             ? route('admin.dashboard', absolute: false)
-            : route('department.index', absolute: false);
+            : route('department.dashboard', absolute: false);
     }
 }

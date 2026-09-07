@@ -5,11 +5,8 @@
 
 @section('content')
 <div class="canvas__inner dashboard-page">
-    <div class="page-header page-header--split">
-        <div>
-            <h2 class="text-headline-lg text-on-surface">Overview</h2>
-            <p class="text-body-md page-header__lede">Hospital imaging transfer activity and storage.</p>
-        </div>
+    <div class="page-header">
+        <p class="text-body-md page-header__lede">Hospital imaging transfer activity and storage.</p>
     </div>
 
     <div class="bento-grid">

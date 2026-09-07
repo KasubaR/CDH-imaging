@@ -79,7 +79,7 @@ class AuthenticationTest extends TestCase
             'password' => 'password',
         ]);
 
-        $response->assertRedirect('/department');
+        $response->assertRedirect('/department/dashboard');
         $this->assertAuthenticatedAs($staff);
     }
 
@@ -194,7 +194,7 @@ class AuthenticationTest extends TestCase
         $this->actingAs($admin)
             ->get('/admin/dashboard')
             ->assertOk()
-            ->assertSee('Overview');
+            ->assertSee('System Dashboard');
     }
 
     public function test_staff_cannot_log_in_via_admin_login(): void

@@ -76,6 +76,23 @@ class User extends Authenticatable
         return $this->role === UserRole::Staff->value;
     }
 
+    public function isMoic(): bool
+    {
+        return $this->role === UserRole::Moic->value;
+    }
+
+    /**
+     * Admin and MOIC both see every department's images/examinations,
+     * bypassing the usual referring-department/transfer-participation scope
+     * in ImagePolicy/ExaminationPolicy — but MOIC still needs the ViewImages
+     * (and Download) permission actually assigned, unlike Admin, which
+     * bypasses hasPermission() entirely. See UserRole::Moic's docblock.
+     */
+    public function canViewAllDepartments(): bool
+    {
+        return $this->isAdmin() || $this->isMoic();
+    }
+
     public function hasPermission(PermissionEnum|string $permission): bool
     {
         if ($this->isAdmin()) {
@@ -89,7 +106,10 @@ class User extends Authenticatable
 
     public function canAccessDepartment(): bool
     {
-        if ($this->isAdmin()) {
+        // Admin and MOIC are both intentionally department-independent (see
+        // UserRole::Moic) — neither should be logged out by
+        // EnsureAccountIsActive just for having no department.
+        if ($this->canViewAllDepartments()) {
             return true;
         }
 

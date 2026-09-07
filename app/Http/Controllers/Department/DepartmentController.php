@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\ExaminationType;
 use App\Models\TransferRecipient;
-use App\Services\DashboardStatsService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -40,11 +39,6 @@ class DepartmentController extends Controller
         'month' => 'This Month',
     ];
 
-    public function __construct(private readonly DashboardStatsService $dashboardStats)
-    {
-        //
-    }
-
     /**
      * The department inbox — every TransferRecipient row addressed to the current user's own
      * department. There is no cross-department browsing here: one user belongs to one department,
@@ -68,24 +62,8 @@ class DepartmentController extends Controller
         /** @var LengthAwarePaginator<int, TransferRecipient> $recipients */
         $recipients = $query->latest('id')->paginate(15)->withQueryString();
 
-        $stats = $departmentId !== null
-            ? $this->dashboardStats->departmentTransferStats($departmentId)
-            : [
-                'new' => 0,
-                'received_today' => 0,
-                'sent_today' => 0,
-                'pending' => 0,
-                'completed' => 0,
-            ];
-
-        $recentTransfers = $departmentId !== null
-            ? $this->dashboardStats->departmentRecentTransfers($departmentId)
-            : collect();
-
         return view('department.index', [
             'recipients' => $recipients,
-            'stats' => $stats,
-            'recentTransfers' => $recentTransfers,
             'departments' => Department::query()->where('is_active', true)->orderBy('name')->get(),
             'examinationTypes' => ExaminationType::query()->where('is_active', true)->orderBy('name')->get(),
             'statusOptions' => collect(self::STATUS_FILTERS)->mapWithKeys(

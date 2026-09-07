@@ -11,15 +11,12 @@
 
     $roleOptions = [
         ['value' => 'staff', 'label' => 'Department account'],
+        ['value' => 'moic', 'label' => 'Medical Officer in Charge'],
         ['value' => 'admin', 'label' => 'System administrator'],
     ];
 @endphp
 
 <div class="canvas__inner admin-accounts-page">
-    <div class="page-header">
-        <h2 class="text-headline-lg text-on-surface">Add account</h2>
-    </div>
-
     <div class="bento-card form-card">
         <form method="post" action="{{ route('admin.accounts.store') }}" class="form-stack">
             @csrf
@@ -60,7 +57,7 @@
                     :value="old('department_id')"
                     placeholder="Select department..."
                 />
-                <p class="form-hint">Required for a department account. Ignored for a system administrator.</p>
+                <p class="form-hint">Required for a department account. Ignored for a system administrator or Medical Officer in Charge.</p>
             </div>
 
             <div class="form-group">
@@ -75,7 +72,7 @@
 
             <fieldset class="form-group">
                 <legend class="form-label">Permissions</legend>
-                <p class="form-hint">Ignored for a system administrator — admins implicitly hold every permission.</p>
+                <p class="form-hint">Ignored for a system administrator — admins implicitly hold every permission. A Medical Officer in Charge account needs View permitted images (and usually Download) checked to see every department's images.</p>
                 @foreach ($permissions as $permission)
                     <label class="form-checkbox">
                         <input type="checkbox" name="permissions[]" value="{{ $permission->value }}" @checked(collect(old('permissions', []))->contains($permission->value))>

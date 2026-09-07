@@ -6,7 +6,6 @@
 @section('content')
 <div class="canvas__inner admin-settings-page">
     <div class="page-header">
-        <h2 class="text-headline-lg text-on-surface">Settings</h2>
         <p class="text-body-md page-header__lede">Storage and retention limits. Changes take effect immediately — no restart or deploy needed.</p>
     </div>
 

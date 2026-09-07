@@ -22,7 +22,6 @@
             <x-layout.topbar
                 :title="trim(View::yieldContent('topbar_title')) ?: 'Chililabombwe District Hospital'"
                 :desktop-title="trim(View::yieldContent('topbar_desktop_title')) ?: null"
-                :search-placeholder="trim(View::yieldContent('topbar_search')) ?: 'Search patients or IDs...'"
             />
 
             <div @class(['canvas', 'canvas--flush' => $flushCanvas ?? false])>

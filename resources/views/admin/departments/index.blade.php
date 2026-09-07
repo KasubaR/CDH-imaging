@@ -6,10 +6,7 @@
 @section('content')
 <div class="canvas__inner admin-departments-page">
     <div class="admin-departments-page__header page-header page-header--split">
-        <div>
-            <h2 class="text-headline-lg text-on-surface">Departments</h2>
-            <p class="text-body-md page-header__lede">Manage departments and which ones can transfer images to each other.</p>
-        </div>
+        <p class="text-body-md page-header__lede">Manage departments and which ones can transfer images to each other.</p>
 
         <div class="admin-departments-page__header-actions">
             <a href="{{ route('admin.departments.matrix') }}" class="btn btn--secondary">

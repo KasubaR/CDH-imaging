@@ -41,24 +41,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const searchBar = document.querySelector('[data-search-bar]');
-    const searchToggle = document.querySelector('[data-search-toggle]');
-    const searchInput = document.getElementById('topbar-search-input');
+    // Mobile filter drawer: the .filter-chips form (x-filter-drawer's slot) lives
+    // in a panel that slides in from the right instead of wrapping inline. One
+    // instance per page, same open/close idiom as the sidebar above.
+    const filterDrawer = document.querySelector('[data-filter-drawer]');
+    const filterDrawerOverlay = document.querySelector('[data-filter-drawer-overlay]');
+    const filterDrawerToggles = document.querySelectorAll('[data-filter-drawer-toggle]');
+    const filterDrawerClose = document.querySelector('[data-filter-drawer-close]');
 
-    if (searchBar && searchToggle && searchInput) {
-        searchToggle.addEventListener('click', () => {
-            const expanded = searchBar.classList.toggle('topbar__search--expanded');
-            searchToggle.setAttribute('aria-expanded', String(expanded));
+    if (filterDrawer && filterDrawerOverlay && filterDrawerToggles.length > 0) {
+        const closeFilterDrawer = () => {
+            filterDrawer.classList.remove('filter-drawer--open');
+            filterDrawerOverlay.classList.remove('filter-drawer-overlay--visible');
+            document.body.classList.remove('filter-drawer-open');
+            filterDrawerToggles.forEach((toggle) => {
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        };
 
-            if (expanded) {
-                searchInput.focus();
-            }
+        const openFilterDrawer = () => {
+            filterDrawer.classList.add('filter-drawer--open');
+            filterDrawerOverlay.classList.add('filter-drawer-overlay--visible');
+            document.body.classList.add('filter-drawer-open');
+            filterDrawerToggles.forEach((toggle) => {
+                toggle.setAttribute('aria-expanded', 'true');
+            });
+        };
+
+        filterDrawerToggles.forEach((toggle) => {
+            toggle.addEventListener('click', () => {
+                if (filterDrawer.classList.contains('filter-drawer--open')) {
+                    closeFilterDrawer();
+                } else {
+                    openFilterDrawer();
+                }
+            });
         });
 
+        filterDrawerOverlay.addEventListener('click', closeFilterDrawer);
+        filterDrawerClose?.addEventListener('click', closeFilterDrawer);
+
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && searchBar.classList.contains('topbar__search--expanded')) {
-                searchBar.classList.remove('topbar__search--expanded');
-                searchToggle.setAttribute('aria-expanded', 'false');
+            if (event.key === 'Escape' && filterDrawer.classList.contains('filter-drawer--open')) {
+                closeFilterDrawer();
             }
         });
     }

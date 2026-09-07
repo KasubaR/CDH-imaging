@@ -6,7 +6,6 @@
 @section('content')
 <div class="canvas__inner patients-page">
     <div class="page-header">
-        <h2 class="text-headline-lg text-on-surface">Register patient</h2>
         <p class="text-body-md page-header__lede">Enter patient details manually. This is not a full medical record.</p>
     </div>
 

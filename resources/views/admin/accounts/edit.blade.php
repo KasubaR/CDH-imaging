@@ -11,6 +11,7 @@
 
     $roleOptions = [
         ['value' => 'staff', 'label' => 'Department account'],
+        ['value' => 'moic', 'label' => 'Medical Officer in Charge'],
         ['value' => 'admin', 'label' => 'System administrator'],
     ];
 
@@ -29,7 +30,6 @@
                 <span class="material-symbols-outlined">arrow_back</span>
                 Accounts
             </a>
-            <h2 class="text-headline-lg text-on-surface">Edit account</h2>
             <p class="text-body-md page-header__lede">
                 Update profile, access, and permissions for
                 <span class="font-data-mono">{{ $account->username }}</span>.
@@ -51,7 +51,7 @@
                     </p>
                 </div>
                 <span class="admin-account-edit__role-pill">
-                    {{ $account->isAdmin() ? 'System administrator' : 'Department account' }}
+                    {{ \App\Enums\UserRole::from($account->role)->label() }}
                 </span>
             </div>
 
@@ -116,7 +116,7 @@
                                 :value="old('department_id', $account->department_id)"
                                 placeholder="Select department..."
                             />
-                            <p class="form-hint">Required for department accounts. Optional for administrators.</p>
+                            <p class="form-hint">Required for department accounts. Optional for administrators and Medical Officer in Charge accounts.</p>
                         </div>
                     </div>
                 </section>
@@ -125,7 +125,7 @@
                     <div class="admin-account-edit__section-head">
                         <h3 id="account-permissions-heading" class="admin-account-edit__section-title">Permissions</h3>
                         <p class="admin-account-edit__section-lede">
-                            Applies to department accounts only. Administrators already hold every permission.
+                            Applies to department and Medical Officer in Charge accounts. Administrators already hold every permission. A Medical Officer in Charge account needs View permitted images (and usually Download) checked to see every department's images.
                         </p>
                     </div>
 

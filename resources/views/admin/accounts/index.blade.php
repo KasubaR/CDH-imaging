@@ -7,6 +7,7 @@
 @php
     $roleFilterOptions = [
         ['value' => 'admin', 'label' => 'System administrator'],
+        ['value' => 'moic', 'label' => 'Medical Officer in Charge'],
         ['value' => 'staff', 'label' => 'Department account'],
     ];
 
@@ -18,10 +19,7 @@
 
 <div class="canvas__inner admin-accounts-page">
     <div class="admin-accounts-page__header page-header page-header--split">
-        <div>
-            <h2 class="text-headline-lg text-on-surface">Accounts</h2>
-            <p class="text-body-md page-header__lede">Provision and manage staff and administrator accounts.</p>
-        </div>
+        <p class="text-body-md page-header__lede">Provision and manage staff and administrator accounts.</p>
 
         <a href="{{ route('admin.accounts.create') }}" class="btn btn--primary">
             <span class="material-symbols-outlined">person_add</span>
@@ -29,6 +27,7 @@
         </a>
     </div>
 
+    <x-filter-drawer>
     <form method="get" action="{{ route('admin.accounts.index') }}" class="filter-chips" role="group" aria-label="Filters">
         <input
             type="search"
@@ -75,6 +74,7 @@
         <button type="submit" class="btn btn--secondary">Filter</button>
         <a href="{{ route('admin.accounts.index') }}" class="btn btn--ghost">Clear</a>
     </form>
+    </x-filter-drawer>
 
     <div class="bento-card admin-accounts-table">
         @if ($accounts->isEmpty())
@@ -96,7 +96,7 @@
                                 <x-status-badge variant="sent">Inactive</x-status-badge>
                             @endif
                         </div>
-                        <div class="card-list__meta">{{ $account->isAdmin() ? 'System administrator' : 'Department account' }}</div>
+                        <div class="card-list__meta">{{ \App\Enums\UserRole::from($account->role)->label() }}</div>
                         <div class="card-list__actions">
                             <a href="{{ route('admin.accounts.edit', $account) }}" class="btn btn--secondary">Edit</a>
                             @if ($account->id !== auth()->id())
@@ -137,7 +137,7 @@
                                 <td class="text-on-surface">{{ $account->name }}</td>
                                 <td class="font-data-mono">{{ $account->username }}</td>
                                 <td>{{ $account->department?->name ?? '—' }}</td>
-                                <td>{{ $account->isAdmin() ? 'Administrator' : 'Staff' }}</td>
+                                <td>{{ \App\Enums\UserRole::from($account->role)->label() }}</td>
                                 <td>
                                     @if ($account->is_active)
                                         <x-status-badge variant="completed">Active</x-status-badge>

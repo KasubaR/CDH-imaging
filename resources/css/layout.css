@@ -264,68 +264,12 @@
     display: none;
 }
 
-.topbar__center {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.topbar__search {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 20rem;
-}
-
-.topbar__search-toggle {
-    display: inline-flex;
-}
-
-.topbar__search-field {
-    display: none;
-    position: relative;
-    flex: 1;
-}
-
-.topbar__search--expanded .topbar__search-toggle {
-    display: none;
-}
-
-.topbar__search--expanded .topbar__search-field {
-    display: block;
-}
-
-.topbar__search-input {
-    width: 100%;
-    height: var(--control-height);
-    padding: 0 var(--space-4) 0 calc(var(--space-4) + var(--space-5));
-    background: var(--color-surface-container-low);
-    border: 1px solid var(--color-outline-variant);
-    border-radius: var(--radius-full);
-    color: var(--color-on-surface);
-}
-
-.topbar__search-input:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 2px rgba(15, 61, 46, 0.15);
-}
-
-.topbar__search-icon {
-    position: absolute;
-    left: var(--space-3);
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-on-surface-variant);
-    pointer-events: none;
-}
-
 .topbar__actions {
     display: flex;
     align-items: center;
     gap: var(--space-2);
     flex-shrink: 0;
+    margin-left: auto;
 }
 
 .topbar__notifications {
@@ -512,31 +456,8 @@
         font-size: 22px;
     }
 
-    .btn.topbar__search-toggle {
-        display: none;
-    }
-
-    .topbar__search-field {
-        display: block;
-    }
-
     .topbar__user-name {
         display: block;
         text-align: right;
-    }
-}
-
-@media (max-width: 767px) {
-    .topbar__search--expanded {
-        position: absolute;
-        left: var(--spacing-margin-mobile);
-        right: var(--spacing-margin-mobile);
-        top: calc(var(--safe-area-top) + var(--space-3));
-        z-index: 31;
-        max-width: none;
-    }
-
-    .topbar__search--expanded .topbar__search-field {
-        display: block;
     }
 }

@@ -67,7 +67,7 @@ class DepartmentDashboardTest extends TestCase
             'sent_at' => now(),
         ]);
 
-        $response = $this->actingAs($opdStaff)->get(route('department.index'));
+        $response = $this->actingAs($opdStaff)->get(route('department.dashboard'));
 
         $response->assertOk();
         $response->assertSee('X-RAY TRANSFER');
@@ -85,6 +85,11 @@ class DepartmentDashboardTest extends TestCase
         $this->assertSame(1, $stats['sent_today']);
         $this->assertSame(1, $stats['pending']);
         $this->assertSame(1, $stats['completed']);
+
+        $this->actingAs($opdStaff)
+            ->get(route('department.index'))
+            ->assertOk()
+            ->assertDontSee('X-RAY TRANSFER', false);
     }
 
     private function sendTransferTo(

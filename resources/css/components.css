@@ -763,24 +763,130 @@ select.form-input {
 /* Filter chips row */
 .filter-chips {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: var(--space-2);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
     padding-bottom: var(--space-1);
-    scrollbar-width: none;
+    overflow: visible;
 }
 
-.filter-chips::-webkit-scrollbar {
+/* Search must not shrink inside the chip row — full width on mobile, capped on desktop. */
+.filter-chips > .patients-search__input {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+}
+
+.filter-chips > .btn,
+.filter-chips > .dropdown {
+    flex: 0 0 auto;
+}
+
+@media (min-width: 768px) {
+    .filter-chips > .patients-search__input {
+        flex: 1 1 14rem;
+        max-width: 20rem;
+        width: auto;
+    }
+}
+
+/* Keep open dropdown menus from being clipped by a scrolling parent. */
+.filter-chips:has(.dropdown--open) {
+    overflow: visible;
+}
+
+/* Filter drawer — on mobile the .filter-chips form (passed in as the slot)
+   lives inside a panel that slides in from the right instead of wrapping
+   inline; on desktop this component is a transparent passthrough and the
+   trigger/overlay/header never render. */
+.filter-drawer-trigger {
     display: none;
 }
 
-/* overflow-x: auto forces the computed overflow-y to auto too, which clips any
-   open dropdown menu extending below this row and drags the whole row's scroll
-   position when the browser tries to scroll the selected option into view.
-   Let the row's own overflow go visible while a dropdown inside it is open. */
-.filter-chips:has(.dropdown--open) {
-    overflow: visible;
+.filter-drawer-overlay {
+    display: none;
+}
+
+.filter-drawer__header {
+    display: none;
+}
+
+.filter-drawer__body {
+    display: contents;
+}
+
+@media (max-width: 767px) {
+    .filter-drawer-trigger {
+        display: inline-flex;
+    }
+
+    .filter-drawer-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(30, 26, 20, 0.45);
+        z-index: 65;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--duration-med) var(--ease-out);
+    }
+
+    .filter-drawer-overlay--visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .filter-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 70;
+        width: min(85vw, 22rem);
+        display: flex;
+        flex-direction: column;
+        background: var(--color-surface-container-lowest);
+        box-shadow: var(--shadow-float);
+        transform: translateX(100%);
+        transition: transform var(--duration-med) var(--ease-out);
+        overflow-y: auto;
+    }
+
+    .filter-drawer--open {
+        transform: translateX(0);
+    }
+
+    .filter-drawer__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-3);
+        padding: var(--space-4) var(--space-5);
+        border-bottom: 1px solid var(--color-outline-variant);
+        flex-shrink: 0;
+    }
+
+    .filter-drawer__title {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 650;
+        color: var(--color-on-surface);
+    }
+
+    .filter-drawer__body {
+        display: block;
+        padding: var(--space-5);
+    }
+
+    .filter-drawer__body .filter-chips {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-drawer__body .filter-chips > .btn,
+    .filter-drawer__body .filter-chips > .dropdown {
+        width: 100%;
+    }
 }
 
 /* Home cards */

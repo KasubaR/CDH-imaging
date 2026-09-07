@@ -41,7 +41,7 @@ class UserController extends Controller
                     ->orWhere('email', 'like', "%{$search}%");
             }))
             ->when($departmentId, fn ($query) => $query->where('department_id', $departmentId))
-            ->when(in_array($role, ['admin', 'staff'], true), fn ($query) => $query->where('role', $role))
+            ->when(UserRole::tryFrom($role) !== null, fn ($query) => $query->where('role', $role))
             ->when($status === 'active', fn ($query) => $query->where('is_active', true))
             ->when($status === 'inactive', fn ($query) => $query->where('is_active', false))
             ->orderBy('name')
@@ -73,7 +73,6 @@ class UserController extends Controller
     public function store(StoreUserRequest $request): RedirectResponse
     {
         $validated = $request->validated();
-        $isStaff = $validated['role'] === UserRole::Staff->value;
 
         $account = User::query()->create([
             'name' => $validated['name'],
@@ -85,7 +84,7 @@ class UserController extends Controller
             'is_active' => true,
         ]);
 
-        if ($isStaff) {
+        if ($this->syncsPermissions($account)) {
             $this->syncPermissions($account, $validated['permissions'] ?? []);
         }
 
@@ -111,11 +110,9 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $account): RedirectResponse
     {
         $validated = $request->validated();
-        $isStaff = $validated['role'] === UserRole::Staff->value;
-
         $isSelf = $account->id === $request->user()->id;
 
-        if ($isSelf && $account->isAdmin() && $isStaff) {
+        if ($isSelf && $account->isAdmin() && $validated['role'] !== UserRole::Admin->value) {
             return back()
                 ->withInput()
                 ->with('status', 'You cannot remove your own admin access.');
@@ -129,7 +126,7 @@ class UserController extends Controller
             'role' => $validated['role'],
         ]);
 
-        if ($isStaff) {
+        if ($this->syncsPermissions($account)) {
             $this->syncPermissions($account, $validated['permissions'] ?? []);
         } else {
             $account->permissions()->sync([]);
@@ -183,5 +180,17 @@ class UserController extends Controller
         $ids = Permission::query()->whereIn('slug', $slugs)->pluck('id');
 
         $account->permissions()->sync($ids);
+    }
+
+    /**
+     * Everyone except Admin gets an editable permissions[] pivot — Staff uses
+     * it for the usual view/upload/send/receive/download/forward set, MOIC
+     * for ViewImages+Download (see UserRole::Moic). Admin's pivot is instead
+     * force-cleared to empty in update() since hasPermission() already
+     * short-circuits true for admins and stale rows would be misleading.
+     */
+    private function syncsPermissions(User $account): bool
+    {
+        return ! $account->isAdmin();
     }
 }

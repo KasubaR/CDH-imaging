@@ -24,6 +24,10 @@ class ExaminationPolicy
             return false;
         }
 
+        if ($user->canViewAllDepartments()) {
+            return true;
+        }
+
         $departmentId = $user->department_id;
 
         if ($departmentId === null) {

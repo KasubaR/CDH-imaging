@@ -21,6 +21,12 @@ class ImagePolicy
             return false;
         }
 
+        // MOIC still needs ViewImages explicitly assigned (checked above) but,
+        // unlike ordinary staff, isn't limited to its own department's exams.
+        if ($user->canViewAllDepartments()) {
+            return true;
+        }
+
         return $this->userCanAccessExamination($user, $image->examination);
     }
 
@@ -32,6 +38,10 @@ class ImagePolicy
 
         if (! $user->hasPermission(PermissionEnum::Download)) {
             return false;
+        }
+
+        if ($user->canViewAllDepartments()) {
+            return true;
         }
 
         return $this->userCanAccessExamination($user, $image->examination);

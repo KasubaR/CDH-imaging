@@ -2,15 +2,11 @@
 
 @section('title', 'Patients — Chililabombwe District Hospital')
 @section('topbar_desktop_title', 'Patients')
-@section('topbar_search', 'Search patients...')
 
 @section('content')
 <div class="canvas__inner patients-page">
     <div class="patients-page__header page-header page-header--split">
-        <div>
-            <h2 class="text-headline-lg text-on-surface">Patients</h2>
-            <p class="text-body-md page-header__lede">Register patients and view examination history.</p>
-        </div>
+        <p class="text-body-md page-header__lede">Register patients and view examination history.</p>
 
         @can('create', App\Models\Patient::class)
             <a href="{{ route('patients.create') }}" class="btn btn--primary">

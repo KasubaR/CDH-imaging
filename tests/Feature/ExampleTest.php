@@ -34,8 +34,8 @@ class ExampleTest extends TestCase
 
         $this->actingAs($admin);
 
-        $this->get('/admin/dashboard')->assertOk()->assertSee('Overview');
-        $this->get('/department')->assertOk()->assertSee('Department Inbox');
+        $this->get('/admin/dashboard')->assertOk()->assertSee('System Dashboard');
+        $this->get('/department')->assertOk()->assertSee('Inbox');
 
         $patient = Patient::factory()->create(['patient_name' => 'Mwansa, John']);
         $this->get('/patients')->assertOk()->assertSee('Mwansa, John');

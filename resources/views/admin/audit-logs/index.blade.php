@@ -6,10 +6,10 @@
 @section('content')
 <div class="canvas__inner admin-audit-log-page">
     <div class="page-header">
-        <h2 class="text-headline-lg text-on-surface">Audit Log</h2>
         <p class="text-body-md page-header__lede">Every recorded upload, view, download, transfer and deletion event — read-only.</p>
     </div>
 
+    <x-filter-drawer>
     <form method="get" action="{{ route('admin.audit-logs.index') }}" class="filter-chips" role="group" aria-label="Filters">
         <input
             type="search"
@@ -56,6 +56,7 @@
         <button type="submit" class="btn btn--secondary">Filter</button>
         <a href="{{ route('admin.audit-logs.index') }}" class="btn btn--ghost">Clear</a>
     </form>
+    </x-filter-drawer>
 
     <div class="bento-card admin-audit-log-table">
         @if ($logs->isEmpty())

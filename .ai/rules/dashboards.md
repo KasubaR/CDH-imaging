@@ -1,12 +1,12 @@
 ---
 paths:
-  - 'app/Services/DashboardStatsService.php,app/Http/Controllers/Department/DepartmentController.php,app/Http/Controllers/Admin/DashboardController.php,resources/views/department/index.blade.php,resources/views/admin/dashboard.blade.php'
+  - 'app/Services/DashboardStatsService.php,app/Http/Controllers/Department/DashboardController.php,app/Http/Controllers/Department/DepartmentController.php,app/Http/Controllers/Admin/DashboardController.php,resources/views/department/dashboard.blade.php,resources/views/department/index.blade.php,resources/views/admin/dashboard.blade.php'
 ---
 
 # Dashboards
 
-## Department inbox dashboard (`department.index`)
-KPI strip **X-RAY TRANSFER** sits above the existing filterable inbox (not a separate route). Scoped to `$user->department_id` via `DashboardStatsService::departmentTransferStats()`.
+## Department dashboard (`department.dashboard`)
+Staff land here after login. KPI strip **X-RAY TRANSFER** and **Recent Transfers** live on this page only — not on the inbox. Scoped to `$user->department_id` via `DashboardStatsService::departmentTransferStats()` / `departmentRecentTransfers()`.
 
 | KPI | Definition |
 | --- | --- |
@@ -16,7 +16,9 @@ KPI strip **X-RAY TRANSFER** sits above the existing filterable inbox (not a sep
 | Pending | Inbound recipients with status `pending` only |
 | Completed | Inbound recipients with status `completed` |
 
-**Recent Transfers** = latest 10 inbound `TransferRecipient` rows (patient, examination, inbox status). Hidden when inbox GET filters are active so filtered inbox assertions stay isolated.
+**Recent Transfers** = latest 10 inbound `TransferRecipient` rows (patient, examination, inbox status).
+
+`department.index` is the filterable inbox list only.
 
 ## Admin dashboard (`admin.dashboard`)
 Live KPIs via `DashboardStatsService::adminOverview()`:

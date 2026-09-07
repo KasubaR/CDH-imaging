@@ -19,7 +19,8 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-body.sidebar-open {
+body.sidebar-open,
+body.filter-drawer-open {
     overflow: hidden;
 }
 
@@ -151,7 +152,6 @@ textarea {
 
     .form-input,
     .form-input-group .form-input,
-    .topbar__search-input,
     .patients-search__input,
     .dropdown__trigger {
         font-size: 16px;

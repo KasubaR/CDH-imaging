@@ -19,25 +19,6 @@
             </h1>
         </div>
 
-        <div class="topbar__center">
-            <div class="topbar__search" data-search-bar>
-                <button type="button" class="btn btn--ghost btn--icon topbar__search-toggle" data-search-toggle aria-expanded="false" aria-controls="topbar-search-input">
-                    <span class="material-symbols-outlined">search</span>
-                    <span class="sr-only">Open search</span>
-                </button>
-                <div class="topbar__search-field">
-                    <span class="material-symbols-outlined topbar__search-icon">search</span>
-                    <input
-                        type="search"
-                        id="topbar-search-input"
-                        class="topbar__search-input"
-                        placeholder="{{ $searchPlaceholder }}"
-                        aria-label="Search"
-                    >
-                </div>
-            </div>
-        </div>
-
         <div class="topbar__actions">
             <div class="topbar__notifications" data-notification-panel>
                 <button

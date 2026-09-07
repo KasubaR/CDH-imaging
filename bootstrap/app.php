@@ -23,7 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
             return $user?->isAdmin()
                 ? route('admin.dashboard', absolute: false)
-                : route('department.index', absolute: false);
+                : route('department.dashboard', absolute: false);
         });
 
         $middleware->alias([

@@ -5,10 +5,6 @@
 
 @section('content')
 <div class="canvas__inner admin-examination-types-page">
-    <div class="page-header">
-        <h2 class="text-headline-lg text-on-surface">Add examination type</h2>
-    </div>
-
     <div class="bento-card form-card">
         <form method="post" action="{{ route('admin.examination-types.store') }}" class="form-stack">
             @csrf

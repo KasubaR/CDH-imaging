@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Department\DashboardController as DepartmentDashboardController;
 use App\Http\Controllers\Department\DepartmentController;
 use App\Http\Controllers\Examination\ExaminationController;
 use App\Http\Controllers\Image\ImageController;
@@ -75,6 +76,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::prefix('department')->name('department.')->middleware('permission:view_images')->group(function () {
+        Route::get('/dashboard', [DepartmentDashboardController::class, 'index'])->name('dashboard');
         Route::get('/', [DepartmentController::class, 'index'])->name('index');
     });
 

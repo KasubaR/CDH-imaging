@@ -50,6 +50,20 @@
     white-space: nowrap;
 }
 
+.department-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gutter);
+}
+
+.department-dashboard__title {
+    margin: 0;
+}
+
+.inbox-recent-card {
+    overflow: hidden;
+}
+
 @media (min-width: 768px) {
     .activity-card {
         grid-column: 1 / -1;

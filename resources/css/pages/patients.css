@@ -18,6 +18,7 @@
 
 .patients-search__input {
     width: 100%;
+    min-width: 0;
     min-height: var(--touch-min);
     height: var(--control-height);
     padding: 0 var(--space-3);
@@ -25,6 +26,7 @@
     border-radius: var(--radius-lg);
     background: var(--color-surface-container-lowest);
     color: var(--color-on-surface);
+    flex-shrink: 0;
 }
 
 .patients-search__input:focus {
